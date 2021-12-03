@@ -11,7 +11,7 @@ public class JrTestApplication {
 	public static void main(String[] args) throws SQLException {
 
 		System.out.println("Creating database, started");
-		Connection conn = DriverManager.getConnection("jdbc:h2:mem:testdb", "user", "password");
+		Connection conn = DriverManager.getConnection("jdbc:h2:file:./demo", "user", "password");
 		try (Statement st = conn.createStatement()) {
 			st.execute("create schema company");
 			st.execute(
@@ -25,6 +25,7 @@ public class JrTestApplication {
 			st.execute("INSERT INTO company.customer VALUES (7, 'Maria', 24, 'Limon', 10000 ) ");
 		}
 		System.out.println("Creating database, ended");
+
 		SpringApplication.run(JrTestApplication.class, args);
 	}
 
